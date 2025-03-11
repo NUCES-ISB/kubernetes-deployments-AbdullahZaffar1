@@ -1,0 +1,36 @@
+Name:                   postgres
+Namespace:              default
+CreationTimestamp:      Tue, 11 Mar 2025 16:25:10 +0500
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=postgres
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=postgres
+  Containers:
+   postgres:
+    Image:      postgres:latest
+    Port:       5432/TCP
+    Host Port:  0/TCP
+    Environment Variables from:
+      postgres-config  ConfigMap  Optional: false
+      postgres-secret  Secret     Optional: false
+    Environment:       <none>
+    Mounts:            <none>
+  Volumes:             <none>
+  Node-Selectors:      <none>
+  Tolerations:         <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   postgres-7c957d8ff5 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  18m   deployment-controller  Scaled up replica set postgres-7c957d8ff5 from 0 to 1
